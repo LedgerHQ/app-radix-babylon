@@ -2,6 +2,20 @@
 
 Ledger Nano S/S Plus/X app for Babylon
 
+## Branching Policy
+This repository follows quite traditional branching policy:
+- `main` contains the current released version
+- `develop` collects all changes planned for inclusion into the next release
+
+## Changes Summary
+- Separation of the UI components. This is necessary for the future implementation of the Stax device support.
+- Fixes for UI according to the comments from Ledger team:
+  - Dashboard icon position (should be at the right)
+  - Double press on "Done" for verify address action
+  - No right arrow on the Nano S+/X on the "Review Transaction" screen
+  - Missing icon on Nano S+/X on the "Blind signing.." screen
+- Support for pre-auth subintent hash signing
+
 ## Build
 
 Simplest way to build app is to use [application builder container](https://github.com/LedgerHQ/ledger-app-builder) provided by Ledger. 
