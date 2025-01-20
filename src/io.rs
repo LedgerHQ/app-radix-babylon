@@ -140,7 +140,7 @@ impl Comm {
 
         while sys_seph::is_status_sent() {
             sys_seph::seph_recv(&mut self.work_buffer, 0);
-            seph::handle_event(&mut self.apdu_buffer, &self.work_buffer);
+            seph::handle_event(&mut self.apdu_buffer, &mut self.work_buffer);
         }
 
         match unsafe { G_io_app.apdu_state } {
@@ -216,7 +216,7 @@ impl Comm {
             }
             seph::Events::USBXFEREvent => {
                 if len >= 3 {
-                    seph::handle_usb_ep_xfer_event(&mut self.apdu_buffer, &self.work_buffer);
+                    seph::handle_usb_ep_xfer_event(&mut self.apdu_buffer, &mut self.work_buffer);
                 }
             }
             seph::Events::CAPDUEvent => {
