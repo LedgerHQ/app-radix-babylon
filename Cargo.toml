@@ -31,8 +31,3 @@ name = "Radix Babylon"
 nanos.icon = "icons/nanos_app_radix.gif"
 nanox.icon = "icons/nanox_app_radix.gif"
 nanosplus.icon = "icons/nanox_app_radix.gif"
-
-[patch.crates-io]
-ledger_device_sdk = { path = "../ledger-device-rust-sdk/ledger_device_sdk" }
-include_gif = { path = "../ledger-device-rust-sdk/include_gif" }
-ledger_secure_sdk_sys = { path = "../ledger-device-rust-sdk/ledger_secure_sdk_sys" }
