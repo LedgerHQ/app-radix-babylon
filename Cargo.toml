@@ -31,3 +31,6 @@ name = "Radix Babylon"
 nanos.icon = "icons/nanos_app_radix.gif"
 nanox.icon = "icons/nanox_app_radix.gif"
 nanosplus.icon = "icons/nanox_app_radix.gif"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("stax", "flex", "nanox", "nanosplus"))'] }
