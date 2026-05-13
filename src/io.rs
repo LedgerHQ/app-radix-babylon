@@ -3,8 +3,7 @@
 use core::convert::TryFrom;
 
 use ledger_device_sdk::seph;
-use ledger_device_sdk::sys::buttons::{get_button_event, ButtonEvent, ButtonsState};
-use ledger_device_sdk::sys::seph as sys_seph;
+use ledger_device_sdk::buttons::{get_button_event, ButtonEvent, ButtonsState};
 pub use ledger_device_sdk::sys::BOLOS_UX_CONTINUE;
 pub use ledger_device_sdk::sys::BOLOS_UX_IGNORE;
 pub use ledger_device_sdk::sys::BOLOS_UX_OK;
@@ -141,7 +140,7 @@ impl Comm {
     }
 
     fn apdu_send(&mut self) {
-        sys_seph::io_tx(self.apdu_type, &self.apdu_buffer, self.tx);
+        seph::io_tx(self.apdu_type, &self.apdu_buffer, self.tx);
         self.tx = 0;
     }
 
@@ -155,7 +154,7 @@ impl Comm {
 
     pub fn read_event<T: TryFrom<ApduHeader>>(&mut self) -> Option<Event<T>> {
         // Fetch the next message from the MCU
-        let length = sys_seph::io_rx(&mut self.work_buffer, true);
+        let length = seph::io_rx(&mut self.work_buffer, true);
         if length <= 0 {
             return None;
         }
